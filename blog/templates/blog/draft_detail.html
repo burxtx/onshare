@@ -1,0 +1,35 @@
+{% extends "blog/base.html" %}
+{% block title %}{{ draft.title }}{% endblock %}
+{% block head %}{{ draft.title }}{% endblock %}
+{% block page %}
+  <script src="{{ STATIC_URL }}blog/js/publish.js"></script>
+{% endblock %}
+{% block content %}
+  <p>{{ draft.body|safe }}</p>
+  {% for tag in draft.tag_set.all %}
+    <div class="post-tag">
+      #<a class="post-tag" href="/tag/{{ tag.name|urlencode }}/">{{ tag.name }}</a>
+    </div>
+  {% endfor %}
+  <div class="form-group">
+    <button class="btn btn-success" action="/blogpost/{{ draft.id }}/" id="publish" name="submit_live" value="submit" type="submit">
+      <span class="glyphicon glyphicon-ok"></span> Publish</button>
+    <button class="btn btn-default" name="back" value="back" type="submit" onclick="goBack()">
+      <span class="glyphicon glyphicon-circle-arrow-left"></span> Back</button>
+    <ul class="list-inline opts">
+      <li>
+        <a href="{% url blog:blogpost_update draft.id %}">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </a>
+      </li>
+      <li>
+        <form name="deleteForm" onsubmit="return confirm('Are you sure you want to delete this draft?')" method="post" action="{% url blog:blogpost_delete draft.id %}">
+          {% csrf_token %}
+          <a href="javascript:if(confirm('Are you sure you want to delete?')){deleteForm.submit();}">
+            <span class="glyphicon glyphicon-trash"></span>
+          </a>
+        </form>
+      </li>
+  </div>
+{% endblock %}
+
