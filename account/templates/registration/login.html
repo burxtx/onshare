@@ -37,45 +37,66 @@
     >No Hashky account? 
     <a href="{% url account:register_page %}">Sign up now</a>
   </div>
-  <div id="signin">
+  <div>
+    <div id="meName" class="Name"></div>
+    <div id="meImg"></div>
+    <div id="signin"></div>
   </div>
+  <script src="//js.live.net/v5.0/wl.js" type="text/javascript"></script>
   <script type="text/javascript">
-  $(function (){
-    WL.Event.subscribe("auth.login", onLogin);
-    function onLogin(){
-      var session = WL.getSession();
-      if(!session.error){
-        greetUser();}
-    };
-    function greetUser(){
-      WL.api({
-        path: "/me",
-        method: "get"
-      };).then(
-          function (result) {
-            document.getElementById("meName").innerText = "Welcome, " + result.name;
-            getUserPicture ();
-          });
-    }; 
-    function getUserPicture(){
-      var session = WL.getSession();
-      var LiveConnectAPIUrl = "https://apis.live.net/v5.0";
-      document.getElementById("meImg").src = LiveConnectAPIUrl +
-         "/me/picture?return_ssl_resources=true&access_token=" + session.access_token;
-      document.getElementById("meImg").style.visibility = "visible";
-    };
-    var scopes = ["wl.signin", "wl.basic"];
-    WL.init({
-      client_id: ""0000000040125771,
-      redirect_uri: "www.baidu.com",
-      scope: "wl.signin", 
-      response_type: "token"
-    });
-    WL.ui({
-      name: "signin",
-      element: "signin",
-      scope: scopes
-    });
-  });
+
+    // Update the following values
+    var client_id = "0000000040125771",
+    scope = ["wl.signin", "wl.basic"], //"wl.offline_access", "office.onenote_create"],
+    redirect_uri = "www.ikuaiyue.com";
+
+    function id(domId) {
+      return document.getElementById(domId);
+    }
+
+    function displayMe() {
+      var imgHolder = id("meImg"),
+      nameHolder = id("meName");
+
+      if (imgHolder.innerHTML != "") return;
+
+      if (WL.getSession() != null) {
+        wL.api({ path: "me/picture", method: "get" }).then(
+          function (response) {
+            if (response.location) {
+              imgHolder.innerHTML = "<img src='" + response.location + "' />";
+            }
+          }
+        );
+
+        WL.api({ path: "me", method: "get" }).then(
+          function (response) {
+            nameHolder.innerHTML = response.name;
+          }
+        );
+      }
+    }
+
+    function clearMe() {
+      id("meImg").innerHTML = "";
+      id("meName").innerHTML = "";
+    }
+
+    WL.Event.subscribe("auth.sessionChange",
+      function (e) {
+        if (e.session) {
+          displayMe();
+        }
+        else {
+          clearMe();
+        }
+      }
+    );
+
+    WL.init({ client_id: client_id, redirect_uri: redirect_uri, response_type: "code", scope: scope });
+
+    WL.ui({ name: "signin", element: "signin" });
+
   </script>
+
 {% endblock %}

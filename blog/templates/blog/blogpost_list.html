@@ -1,55 +1,35 @@
 <script src="{{ STATIC_URL }}blog/js/delete.js"></script>
 <script src="{{ STATIC_URL }}blog/js/edit.js"></script>
 {% load markup %}
-{% if blogposts %}
-  {% for blogpost in blogposts %}
-    <div class="blog-post">
-      <h2 class="blog-post-title"><a href="/blogpost/{{ blogpost.id }}">{{ blogpost.title }}</a></h2>
-      <div class="blog-post-meta">
-        {{ blogpost.create_time }}
-        {% if show_user %}
-          <div class="author">
-            Posted by:  
-            <a href="/user/{{ blogpost.user.username }}/" class="username">
-            {{ blogpost.user.username }}</a>
-          </div>
-        {% endif %}
-        {% if show_edit %}
-          <ul class="opts list-inline">
-            <li>
-              <a id="{{ blogpost.id }}" href="javascript:void(0)" class="post tool edit">
-              <span class="glyphicon glyphicon-pencil"></span></a>
-            </li>
-          <!-- <a href="{% url blog:blogpost_update blogpost.id %}" class="post tool edit">[edit]</a> -->
-            <li>
-              <a id="{{ blogpost.id }}" href="javascript:void(0)" class="post tool delete">
-              <span class="glyphicon glyphicon-trash"></span></a>
-            </li>
-          </ul>
-        {% endif %}
-      </div>
-      {% if show_body %}
-        {{ blogpost.body|markdown|safe|truncatewords_html:300 }}
-        {% ifnotequal blogpost.body|markdown|safe|truncatewords_html:30|length blogpost.body|markdown|safe|truncatewords_html:31|length %}
-          <a href="/blogpost/{{ blogpost.id }}">Read more...</a>
-        {% endifnotequal %}
-      {% endif%}
-      {% if show_tags %}
-        {% if blogpost.tag_set.all %}
-          <div class="post-tags">
-            {% for tag in blogpost.tag_set.all %}
-              <div class="post-tag">
-                #<a class="post-tag" href="/tag/{{ tag.name|urlencode }}/">{{ tag.name }}</a>
+        <ul>
+          <li class="notebook-list-item">
+            <a href="/notebook/7" id="Notebook0" class="Notebook">
+              <div class="NotebookIcon clip48x48">
+                <img src="https://www.onenote.com/ondc/1631231554_Images/en-US/ondc_notebooks.png" class="ondc_notebooks_icnotebk_48x48x32">
               </div>
-            {% endfor %}
-          </div>
-        {% endif %}
-      {% endif %}
-      <div class="vote-summary">
-        {% include "blog/ratings.html" %}
-      </div>
-    </div>
-  {% endfor %}
-{% else %}
-  <p>No blog posts found.</p>
-{% endif %}
+              <div class="TileTextContainer">
+                <div title="Personal" class="NotebookName FontS3">Some thinking about music</div>
+              </div>
+            </a>
+          </li>
+          <li class="notebook-list-item">
+            <a href="https://onedrive.live.com/redir.aspx?cid=05888764f38cd69b&amp;page=edit&amp;resid=5888764F38CD69B!560" id="Notebook0" class="Notebook">
+              <div class="NotebookIcon clip48x48">
+                <img src="https://www.onenote.com/ondc/1631231554_Images/en-US/ondc_notebooks.png" class="ondc_notebooks_icnotebk_48x48x32">
+              </div>
+              <div class="TileTextContainer">
+                <div title="Personal" class="NotebookName FontS3">Web strategy and policies</div>
+              </div>
+            </a>
+          </li>
+          <li class="notebook-list-item">
+            <a href="https://onedrive.live.com/redir.aspx?cid=05888764f38cd69b&amp;page=edit&amp;resid=5888764F38CD69B!560" id="Notebook0" class="Notebook">
+              <div class="NotebookIcon clip48x48">
+                <img src="https://www.onenote.com/ondc/1631231554_Images/en-US/ondc_notebooks.png" class="ondc_notebooks_icnotebk_48x48x32">
+              </div>
+              <div class="TileTextContainer">
+                <div title="Personal" class="NotebookName FontS3">Chinese cooking skill manual</div>
+              </div>
+            </a>
+          </li>
+        </ul>

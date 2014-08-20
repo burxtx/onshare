@@ -1,0 +1,40 @@
+
+.clip16x16, .clip48x48 {
+    overflow: hidden;
+    position: relative;
+}
+.clip16x16 {
+    height: 16px;
+    width: 16px;
+}
+.clip48x48 {
+    height: 48px;
+    width: 48px;
+}
+.clip16x16 img, .clip16x16 input, .clip48x48 img, .clip48x48 input {
+    height: auto;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: auto;
+}
+.ondc_notebooks_UnfiledNotes_48x48x32 {
+    left: -1px;
+    top: -1px;
+}
+.ondc_notebooks_icnotebk_48x48x32 {
+    left: -51px;
+    top: -1px;
+}
+.ondc_notebooks_Back_16x16x32 {
+    left: -1px;
+    top: -51px;
+}
+.ondc_notebooks_PlusSymbol_16x16x32 {
+    left: -19px;
+    top: -51px;
+}
+.ondc_notebooks_ClosePaneGlyph_16x16x32 {
+    left: -37px;
+    top: -51px;
+}

@@ -4,17 +4,51 @@
 
 <div class="container">
   {% block content%}
-    <ul class="nav nav-tabs">
-      <li><a href="">Spotlight</a></li>
-      <li><a href="">Collections</a></li>
-      <li class="active"><a href="">Following people</a></li>
-    </ul>
+    <div class="nav-list-bar">
+      <ul class="nav nav-list category" >
+        <li class="item active"><a href="#">Collections</a></li>
+        <li class="item"><a href="#">Following people</a></li>
+      </ul>
+    </div>
     {% if following_people %}
       {% for people in following_people %}
         <li><a href="/user/{{ people.username }}/">{{ people.username }}</a></li>
       {% endfor %}
     {% else %}
-      <p>No following people found.</p>
+      <ul>
+        <li class="notebook-list-item">
+          <a href="https://onedrive.live.com/redir.aspx?cid=05888764f38cd69b&amp;page=edit&amp;resid=5888764F38CD69B!560" id="Notebook0" class="Notebook">
+            <div class="NotebookIcon clip48x48">
+              <img src="https://www.onenote.com/ondc/1631231554_Images/en-US/ondc_notebooks.png" class="ondc_notebooks_icnotebk_48x48x32">
+            </div>
+            <div class="TileTextContainer">
+              <div title="Personal" class="NotebookName FontS3">Technology meets policy</div>
+            </div>
+          </a>
+          <div class="item-origin">
+            <a href=""> 
+              <span class="postMetaInline">by: Ev Williams</span>
+              <img class="avatar-image avatar-image--iconWithName" title="Medium" src="https://d262ilb51hltx0.cloudfront.net/fit/c/64/64/0*p3hj9Hq1p14Y962f.jpeg">
+            </a>
+          </div>
+        </li>
+        <li class="notebook-list-item">
+          <a href="https://onedrive.live.com/redir.aspx?cid=05888764f38cd69b&amp;page=edit&amp;resid=5888764F38CD69B!560" id="Notebook0" class="Notebook">
+            <div class="NotebookIcon clip48x48">
+              <img src="https://www.onenote.com/ondc/1631231554_Images/en-US/ondc_notebooks.png" class="ondc_notebooks_icnotebk_48x48x32">
+            </div>
+            <div class="TileTextContainer">
+              <div title="Personal" class="NotebookName FontS3">Real Artists Have Day Jobs</div>
+            </div>
+          </a>
+          <div class="item-origin">
+            <a href=""> 
+              <span class="postMetaInline">by: Sara Benincasa</span>
+              <img class="avatar-image avatar-image--iconWithName" title="Medium" src="https://d262ilb51hltx0.cloudfront.net/fit/c/64/64/0*Kj4i1oCuVBZ0bIPe.jpeg">
+            </a>
+          </div>
+        </li>
+      </ul>
     {% endif %}
   {% endblock %}
   {% block rcontent %}

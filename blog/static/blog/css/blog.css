@@ -35,6 +35,10 @@ body {
     padding-top: 40px;
 }
 
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  /*background-color: #80397b;*/
+  /*color: #fff;*/
+}
 /*
  * Masthead for nav
  */
@@ -179,3 +183,5 @@ body {
   color: #B3B3B1;
   margin-right: 7px;
 }
+
+/*sidebar*/

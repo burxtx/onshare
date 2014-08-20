@@ -209,26 +209,26 @@ def tag_page(request, tag_name):
 # def tag_cloud_page(request):
 @login_required
 def main_page(request):
-    import recommendations as rec
-    # recommended posts
-    # get user data
+    # import recommendations as rec
+    # # recommended posts
+    # # get user data
     user = request.user
-    blogpost = BlogPost.objects.latest('id')
-    handler = ratings.get_handler(blogpost)
-    # others = User.objects.filter().exclude(username=user)
-    # for test all users
-    users = User.objects.all()
-    critics = {}
-    for other in users:
-        voted = handler.has_voted(blogpost,'main', other)
-        if voted:
-            scores = {}
-            for vote in ratings.get_votes_by(other):
-                scores[vote.content_object.title] = vote.score
-                # print "%s -> %s" % (vote.content_object.title, vote.score)
-            if scores != {}:
-                critics[other] = scores
-    print rec.getRecommendations(critics, user)
+    # blogpost = BlogPost.objects.latest('id')
+    # handler = ratings.get_handler(blogpost)
+    # # others = User.objects.filter().exclude(username=user)
+    # # for test all users
+    # users = User.objects.all()
+    # critics = {}
+    # for other in users:
+    #     voted = handler.has_voted(blogpost,'main', other)
+    #     if voted:
+    #         scores = {}
+    #         for vote in ratings.get_votes_by(other):
+    #             scores[vote.content_object.title] = vote.score
+    #             # print "%s -> %s" % (vote.content_object.title, vote.score)
+    #         if scores != {}:
+    #             critics[other] = scores
+    # print rec.getRecommendations(critics, user)
         
     # latest avtivities from following people
     following_people = [followingship.followers for followingship in user.following_set.all()]

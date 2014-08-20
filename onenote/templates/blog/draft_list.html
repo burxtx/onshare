@@ -1,0 +1,33 @@
+{% load markup %}
+{% if drafts %}
+  {% for draft in drafts %}
+    <div class="blog-post">
+      <h2 class="blog-post-title"><a href="/draft/{{ draft.id }}" class="title">{{ draft.title }}</a></h2>
+        <div class="blog-post-meta">
+          {{ draft.create_time }}
+        </div>
+        {% if show_body %}
+          {{ draft.body|markdown|safe|truncatewords_html:300 }}
+          {% ifnotequal blogpost.body|markdown|safe|truncatewords_html:30|length blogpost.body|markdown|safe|truncatewords_html:31|length %}
+            <a href="/draft/{{ draft.id }}">Read more...</a>
+          {% endifnotequal %}
+        {% endif%}
+        <br />
+        {% if show_tags %}
+          {% if draft.tag_set.all %}
+            <div class="post-tags">
+              {% for tag in draft.tag_set.all %}
+                <div class="post-tag">
+                  #<a class="post-tag" href="/tag/{{ tag.name|urlencode }}/">{{ tag.name }}</a>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+          {% endif %}
+        {% endif %}
+      <hr />
+    </div>
+  {% endfor %}
+{% else %}
+  <p>No draft.</p>
+{% endif %}

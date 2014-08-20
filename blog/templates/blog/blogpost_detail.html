@@ -2,43 +2,80 @@
 {% block title %}{{ blogpost.title }}{% endblock %}
 {% block head %}{{ blogpost.title }}{% endblock %}
 {% load markup %}
+
 {% block content %}
-  <div class="blog-post-meta">
-    Created in {{ blogpost.create_time|timesince }} ago
-  </div>
-  {{ blogpost.body|markdown|safe }}
-  <div class="blog-post-meta">
-    Last modified in {{ blogpost.modify_time|timesince }} ago
-  </div>
-  {% if show_tags %}
-    {% if blogpost.tag_set.all %}
-      <div class="post-tags">
-        {% for tag in blogpost.tag_set.all %}
-          <div class="post-tag">
-            #<a class="post-tag" href="/tag/{{ tag.name|urlencode }}/">{{ tag.name }}</a>
-          </div>
-        {% endfor %}
+  <ul class="nav nav-tabs sections">
+    <li class="active"><a href="">Section 1</a></li>
+    <li>
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <a href="">Section 2</a>
+        </div>
       </div>
-    {% else %}
-    {% endif %}
-  {% endif %}
-  {% if show_edit %}
-    <ul class="list-inline opts">
-      <li>
-        <a href="{% url blog:blogpost_update blogpost.id %}">
-          <span class="glyphicon glyphicon-pencil"></span>
-        </a>
-      </li>
-      <li>
-        <form name="deleteForm" onsubmit="return confirm('Are you sure you want to delete this post?')" method="post" action="{% url blog:blogpost_delete blogpost.id %}">
-          {% csrf_token %}
-          <a href="javascript:if(confirm('Are you sure you want to delete?')){deleteForm.submit();}">
-            <span class="glyphicon glyphicon-trash"></span>
-          </a>
-        </form>
-      </li>
-    </ul>
-  {% endif %}
+    </li>
+    <li>
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <a href="">Section 3</a></li>
+        </div>
+      </div>
+  </ul>
+  <div class="section">
+    <div class="row">
+      <div class="col-sm-9 page-content">
+        <div class="blog-post-meta">
+          Created in {{ blogpost.create_time|timesince }} ago
+        </div>
+        {{ blogpost.body|markdown|safe }}
+        <div class="blog-post-meta">
+          Last synced in {{ blogpost.modify_time|timesince }} ago
+        </div>
+        {% if show_tags %}
+          {% if blogpost.tag_set.all %}
+            <div class="post-tags">
+              {% for tag in blogpost.tag_set.all %}
+                <div class="post-tag">
+                  #<a class="post-tag" href="/tag/{{ tag.name|urlencode }}/">{{ tag.name }}</a>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+          {% endif %}
+        {% endif %}
+        {% if show_edit %}
+          <ul class="list-inline opts">
+            <li>
+              <a href="{% url blog:blogpost_update blogpost.id %}">
+                <span class="glyphicon glyphicon-pencil"></span>
+              </a>
+            </li>
+            <li>
+              <form name="deleteForm" onsubmit="return confirm('Are you sure you want to delete this post?')" method="post" action="{% url blog:blogpost_delete blogpost.id %}">
+                {% csrf_token %}
+                <a href="javascript:if(confirm('Are you sure you want to delete?')){deleteForm.submit();}">
+                  <span class="glyphicon glyphicon-trash"></span>
+                </a>
+              </form>
+            </li>
+          </ul>
+        {% endif %}
+        <ul class="list-inline opts">
+            <li>
+              <a href="{% url blog:blogpost_update blogpost.id %}">
+                <span class="glyphicon glyphicon-heart-empty">  Recommend</span>
+              </a>
+            </li>
+        </ul>
+      </div>
+      <div class="col-sm-3 section-pages">
+        <ul class="nav nav-pills nav-stacked">
+          <li class="active"><a href="">Page 1</a></li>
+          <li><a href="">Page 2</a></li>
+          <li><a href="">Page 3</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
   <div class="review">
     Review
     <div class="vote-summary">
@@ -48,7 +85,10 @@
       {% include "blog/ratings_form.html" %}
     {% endif %}
   </div>
-<!--   {% include "blog/comments/comments.html" %}
-  {% include "blog/comments/comment_form.html" %} -->
+  {% include "blog/comments/comments.html" %}
+  {% include "blog/comments/comment_form.html" %}
+{% endblock %}
+{% block rcontent %}
+
 {% endblock %}
 

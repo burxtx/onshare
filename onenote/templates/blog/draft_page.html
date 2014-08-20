@@ -1,0 +1,6 @@
+{% extends "blog/base.html" %}
+{% block title %}{{ username }}{% endblock %}
+{% block head %}{{ username }}'s drafts{% endblock %}
+{% block content %}
+	{% include "blog/draft_list.html" %}
+{% endblock %}

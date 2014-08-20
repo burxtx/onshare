@@ -1,0 +1,106 @@
+/*.nav .nav-stacked {
+  padding:10px 5px 15px 20px;
+}*/
+.section {
+  padding: 0px 15px;
+/*  border-color: #ddd #ddd transparent;
+  border-top-color:#fff;
+  border-right-color:#fff;
+  border-style: solid;
+  border-width: 0px;*/
+}
+.page-content {
+  background-color: white;
+}
+.nav .nav-tabs .sections {
+  padding-left: 10px;
+}
+.nav-tabs > li > a {
+    border: 1px solid transparent;
+    border-radius: 10px 10px 0 0;
+    line-height: 1.42857;
+    margin-right: 2px;
+}
+.section > .col-sm-3 {
+  padding: 0px 0px;
+}
+.panel-danger {
+  border-color: #faebcc;
+}
+.panel {
+    background-color: #fff;
+    border: 0px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 0px;
+}
+.panel-heading {
+    /*border-bottom: 1px solid transparent;*/
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 8px 15px;
+}
+.nav-pills {
+  padding-left: 0;
+}
+.nav-pills > li > a {
+    border-radius: 0px;
+}
+.nav-pills > li {
+    border-right-color: #ddd;
+    border-top-color: #ddd;
+    border-bottom-color: #ddd;
+    border-left-color: white;
+    border-style: solid;
+    border-width: 1px;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background-color: #fff;
+    color: #000; 
+/*    border-color: #ddd #ddd transparent;
+    border-style: solid;
+    border-width: 1px;*/
+    color: #555;
+}
+.col-sm-3 {
+  padding-left: 0;
+  padding-right: 0;
+}
+.nav-list-bar {
+  border-top-color: #999;
+  border-top: 1px solid #999;
+}
+.category > li.item {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.category > li.active > a {
+    border-top-color: #80397b;
+    border-top: 3px solid #80397b;
+    color: #80397b;
+}
+.category > li > a:hover{
+    border-top-color: #80397b;
+    border-top: 3px solid #80397b;
+    color: #80397b;
+}
+.list-item {
+  display: inline;
+}
+
+.avatar-image--iconWithName {
+    height: 32px;
+    vertical-align: top;
+    width: 32px;
+}
+.avatar-image {
+    border-radius: 100%;
+    /*width: 100%;*/
+}
+img {
+    border: 0 none;
+}
+.item-origin {
+  float: right;
+}

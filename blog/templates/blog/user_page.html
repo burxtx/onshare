@@ -1,6 +1,6 @@
 {% extends "blog/base.html" %}
 {% block title %}{{ username }}{% endblock %}
-{% block head %}Blog posts from {{ username }}{% endblock %}
+{% block head %}Notebooks from {{ username }}{% endblock %}
 {% block page %}
   <script type="text/javascript">
     $(document).ready(function(){
@@ -14,17 +14,40 @@
 {% endblock %}
 {% block rcontent %}
   {% ifequal user.username username %}
-    <div class="list-group">
-      <a class="list-group-item" href="/following/{{ username }}/">People you are following</a>
-      <a class="list-group-item" href="/tag-following/{{ username }}/">Tags you like</a>
-    </div>
+    <ul>
+      <li class="following-people">
+        People you are following........ 
+        <a href="/following/{{ username }}/">(total: 5)</a>
+      </li>
+      <li class="my-favourite">
+        My favourites.........(total:2)
+        <ul style="display:inline;">
+          <li class="my-favourite-item">
+            <a href="">CSS design pattern and practice</a>
+          </li>
+          <li class="my-favourite-item">
+            <a href="">OneNote 笔记使用8大窍门</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
   {% else %}
-    <div class="list-group">
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">About</h4>
-        <p class="list-group-item-text">self introduction</p>
-      </a>
-      <li class="list-group-item">
+    <ul>
+      <li class="self-introduction">
+        <a href="#">
+          <h6 class="list-group-item-heading">====来段文艺的个人介绍====</h6>
+          <p class="list-group-item-text">
+
+黑暗温柔 改变过我
+
+心有猛虎 细嗅蔷薇
+
+是镜子 是野生植物
+
+喜静 反骨 在路上</p>
+        </a>
+      </li>
+      <li class="followingship">
       {% if is_following %}
         <a class="btn btn-default unfollow" href="javascript:void(0)">Unfollow</a>
       {% else %}
@@ -32,6 +55,6 @@
         <a class="btn btn-success follow" href="javascript:void(0)">Follow</a>
       </li>
       {% endif %}
-    </div>
+    </ul>
   {% endifequal %}
 {% endblock %}

@@ -1,0 +1,63 @@
+{% extends "blog/base.html" %}
+{% block title %}Demo notebook{% endblock %}
+{% block head %}Demo notebook{% endblock %}
+{% load markup %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ STATIC_URL }}blog/css/OneNote.css">
+<div id="applicationWACNavigationPanel" class="WACMultiColumnNavigationPanel EditMode WacAirSpaceUEX_WindowTransition WacAirSpaceShared_BasicClass" style="top: 70px; width: 350px;">
+  <div class="SectionListView SectionColorCyan" aria-labelledby="NavPaneHiddenLabel" aria-live="assertive" role="navigation" style="visibility: visible;">
+    <div class="NotebookListButton" id="SectionListNotebookButton" role="button" aria-label="转到其他笔记本"><a tabindex="0"><span class="clip14x14 NotebookListButtonImage" unselectable="on" style="z-index: 0; display: inline-block;"><img class="one_PaneExpandCollapseLeftDarker_14x14x32" unselectable="on" role="presentation" src="https://s1-onenote-15.cdn.office.net:443/o/1630303502_resources/2052/one.png"></span><span class="NotebookListButtonLabel" role="presentation">笔记本</span></a></div>
+    <div class="MultiColumnNavHierarchyScroll" role="presentation">
+      <div class="NavHierarchy" role="presentation">
+        <ul role="tree">
+          <li role="presentation">
+            <div class="MultiColumnNavSection SectionColorCyan MultiColumnActiveSection" role="group" aria-labelledby="SectionName:4d2912b4-4ec0-44ed-8917-bff035b5df25:1">
+              <div class="NavSectionHeader">
+                <div class="MultiColumnNavTab">
+                  <div class="MultiColumnNavTabIcon"></div>
+                </div>
+              <div class="NavSectionHeaderContent">
+                <div class="NavSectionName">
+                <p><a tabindex="0" id="SectionName:4d2912b4-4ec0-44ed-8917-bff035b5df25:1">
+                <span style="visibility: hidden; position: absolute; z-index: -100;">分区 </span>
+                <span>快速笔记</span>
+                <span style="visibility: hidden; position: absolute; z-index: -100;"></span>
+                </a></p>
+                </div>
+              </div>
+              </div>
+              <div class="NavSectionPageList" role="presentation">
+              <ul role="presentation"></ul>
+              </div>
+            </div>
+          </li>
+          <li role="presentation"><div class="MultiColumnNavSection SectionColorYellow" role="group" aria-labelledby="SectionName:40c4a0be-3ff1-49c7-b169-ba9d74e0724c:1"><div class="NavSectionHeader"><div class="MultiColumnNavTab"><div class="MultiColumnNavTabIcon"></div></div><div class="NavSectionHeaderContent"><div class="NavSectionName"><p><a tabindex="0" id="SectionName:40c4a0be-3ff1-49c7-b169-ba9d74e0724c:1"><span style="visibility: hidden; position: absolute; z-index: -100;">分区 </span><span>test section</span><span style="visibility: hidden; position: absolute; z-index: -100;"></span></a></p></div></div></div><div class="NavSectionPageList" role="presentation" style="height: 0px;"><ul role="presentation"></ul></div></div></li>
+        </ul>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+{% block rcontent %}
+  <link rel="stylesheet" href="{{ STATIC_URL }}blog/css/docs.min.css">
+  <div role="complementary" class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
+    <ul class="nav bs-docs-sidenav">
+      <li class="active">
+        <a href="#glyphicons">Glyphicons</a>
+      </li>
+      <li class="">
+        <a href="#dropdowns">Dropdowns</a>
+      </li>
+      <li class="">
+        <a href="#btn-groups">Button groups</a>
+      </li>
+      <li class="">
+        <a href="#btn-dropdowns">Button dropdowns</a>
+      </li>
+    </ul>
+  </div>
+{% endblock %}
